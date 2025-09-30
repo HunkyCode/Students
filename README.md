@@ -4,7 +4,7 @@
 
 1) Открыть cmd, выполнить (cклонировать проект на диск С: в личную папку (на диске G: проект не развернется):
     ```
-    git clone https://github.com/sergeyvo80/vki-next
+    git clone https://github.com/HunkyCode/Students
     ```
 
 2) Открыть в VSCode, в терминале VSCode выполнить:

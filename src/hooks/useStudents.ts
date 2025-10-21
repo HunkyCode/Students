@@ -9,7 +9,7 @@ import type StudentInterface from '@/types/StudentInterface';
 interface StudentsHookInterface {
   students: StudentInterface[];
   deleteStudentMutate: (studentId: number) => void;
-  addStudentMutate: (student: StudentInterface) => void;
+  addStudentMutate: (student: Omit<StudentInterface, 'id'>) => void;
 }
 
 const useStudents = (): StudentsHookInterface => {

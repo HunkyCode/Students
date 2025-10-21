@@ -24,7 +24,7 @@ const Students = (): React.ReactElement => {
     console.log('Добавление студента', studentFormField);
 
     addStudentMutate({
-      id: -1,
+      // id: -1,
       ...studentFormField,
       groupId: 1,
       uuid: uuidv4(),

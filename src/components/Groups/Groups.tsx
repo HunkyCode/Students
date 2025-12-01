@@ -3,6 +3,7 @@
 import useGroups from '@/hooks/useGroups';
 import type GroupInterface from '@/types/GroupInterface';
 import styles from './Groups.module.scss';
+import type StudentInterface from '@/types/StudentInterface';
 
 const Groups = (): React.ReactElement => {
   const { groups } = useGroups();
@@ -10,9 +11,15 @@ const Groups = (): React.ReactElement => {
   return (
     <div className={styles.Groups}>
       {groups.map((group: GroupInterface) => (
-        <h2 key={group.id}>
-          {group.name}
-        </h2>
+        <section key={group.id}>
+          <h2 key={group.id}>
+            {group.name}
+          </h2>
+
+          {group.students?.toSorted((a, b) => a.id - b.id).map((student: StudentInterface) => (
+            <p key={student.id}>{`${student.lastName} ${student.firstName} (#${student.id ?? '?'})`}</p>
+          ))}
+        </section>  
       ))}
     </div>
   );

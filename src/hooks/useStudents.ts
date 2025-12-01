@@ -9,7 +9,7 @@ import type StudentInterface from '@/types/StudentInterface';
 interface StudentsHookInterface {
   students: StudentInterface[];
   deleteStudentMutate: (studentId: number) => void;
-  addStudentMutate: (student: Omit<StudentInterface, 'id'>) => void;
+  addStudentMutate: (student: StudentInterface) => void;
 }
 
 const useStudents = (): StudentsHookInterface => {
@@ -18,7 +18,7 @@ const useStudents = (): StudentsHookInterface => {
   const { data, refetch } = useQuery({
     queryKey: ['students'],
     queryFn: () => getStudentsApi(),
-    enabled: false,
+    enabled: true,
   });
 
   /**
@@ -44,19 +44,22 @@ const useStudents = (): StudentsHookInterface => {
       // обновляем данные в TanStackQuery
       queryClient.setQueryData<StudentInterface[]>(['students'], updatedStudents);
 
+      console.log('deleteStudentMutate onMutate', previousStudents, updatedStudents);
+      debugger;
+
       return { previousStudents, updatedStudents };
     },
     onError: (err, variables, context) => {
       console.log('>>> deleteStudentMutate  err', err);
+      debugger;
       queryClient.setQueryData<StudentInterface[]>(['students'], context?.previousStudents);
     },
     // обновляем данные в случаи успешного выполнения mutationFn: async (studentId: number) => deleteStudentApi(studentId),
     onSuccess: async (studentId, variables, { previousStudents }) => {
+      console.log('deleteStudentMutate onSuccess', studentId);
+      debugger;
       await queryClient.cancelQueries({ queryKey: ['students'] });
-      // вариант 1 - запрос всех записей
-      // refetch();
-
-      // вариант 2 - удаление конкретной записи
+      
       if (!previousStudents) {
         return;
       }

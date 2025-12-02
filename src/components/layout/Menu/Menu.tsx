@@ -9,7 +9,7 @@ const Menu = (): React.ReactElement => {
   return (
     <nav className={styles.Menu}>
       <div className={pathname === '/' ? styles.linkActive : ''}>
-        <Link href="/">Главная</Link>
+        <Link href="/">Главное меню</Link>
       </div>
       <div className={pathname === '/groups' ? styles.linkActive : ''}>
         <Link href="/groups">Группы</Link>

@@ -1,17 +1,17 @@
 @use './main';
 
 :root {  
-  --color: #272727;
+  --color: #ffffff;
   --color2: #FFF;
-  --color3: #F00;
-  --background: #FFF;
-  --background2: #E1E1E1;
-  --background3: #434343;  
+  --color3: rgb(255, 0, 0);
+  --background: #1d1d1d;
+  --background2: #3a3a3a;
+  --background3: #000000;  
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color: #d8d8d8;
+    --color: #b16262;
     --color2: #000;
     --color3: #F00;
     --background: #000;
@@ -56,7 +56,7 @@
 
 body {
   margin: 0;
-  font-family: PTSans;
+  font-family: AcromW00;
   color: var(--color);
   background-color: var(--background);
   font-size: 18px;
@@ -67,7 +67,7 @@ body {
 }
 
 @mixin commons {
-  font-family: PTSans;  
+  font-family: AcromW00;  
   color: var(--item-color);
   font-weight: 500;
 }
